@@ -5,7 +5,7 @@ strs_list = [list(s) for s in strs]
 #  ['f', 'l', 'o', 'w'],
 #  ['f', 'l', 'i', 'g', 'h', 't']]
 # この必要はない。文字列から文字は1つずつ取り出せる。
-strs[0][0]
+strs[0][0] # f が返ってくる
 
 # %%
 sorted(strs)
