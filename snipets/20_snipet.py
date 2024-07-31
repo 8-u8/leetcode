@@ -30,29 +30,29 @@ s1 = "()[]{}" # pattern1: 独立して閉じている
 s2 = "([{}])" # pattern2: ネストして閉じている
 s3 = "(){[]}" # pattern3: 1と2のハイブリッド
 s4 = "([)]"   # pattern4: NGケース
-# stacks = []
-# flag = 0
-# for i, s in enumerate(s1):
-#     if s in bracket_dict.values():
-#         stacks.append(s)   
-#     elif s in bracket_dict.keys():
-#         if not stacks or bracket_dict[s] != stacks.pop():
-#             flag += 1
-
+s5 = "(("     # pattern5: NGケース
 # %%
 
 def isValid(s: str) -> bool:
     stacks = []
     for s_ in s:
+        # 開カッコのスタック
         if s_ in bracket_dict.values():
             stacks.append(s_)   
+            print(stacks)
+        # dict に含まれている場合の処理
         elif s_ in bracket_dict.keys():
             # list.pop()は最後の位置を取り出す
             # stacksが空でない、またはbracket_dict[s_]がstacksの
             # 最後尾と一致しない場合
-            if not stacks or bracket_dict[s_] != stacks.pop():
+            flag = not stacks or bracket_dict[s_] != stacks.pop()
+            if flag:
+                print(f"not stacks {not stacks} because stacks: {stacks}")
+                if stacks:
+                    print(f"\{stacks.pop()} is not closed by \{bracket_dict[s_]}")
                 return False
-
+    # if stacks:
+        # print(f"bracket: \{bracket_dict[s_]} and \{stacks.pop()}")
     return not stacks
 # %%
 isValid(s1)
