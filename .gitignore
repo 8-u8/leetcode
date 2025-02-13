@@ -1,3 +1,9 @@
 code/*
 Pipfile.lock
-.venv/*
+.venv/
+.python-version
+pyproject.toml
+requirements-dev.lock
+requirements.lock
+uv.lock
+codingtest_snipet.py
